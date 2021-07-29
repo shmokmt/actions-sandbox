@@ -1,0 +1,27 @@
+name: Trigger Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: デプロイ
+        required: true
+
+jobs:
+  trigger_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Check input value.
+        env:
+          INPUT: ${{ github.event.inputs.deploy }}
+
+      - name: Create and push branch.
+        env:
+          DEPLOY: ${{ github.event.inputs.deploy }}
+        run: |
+          git checkout -b ${DEPLOY}
+          git push --set-upstream --force origin ${DEPLOY}
