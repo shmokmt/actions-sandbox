@@ -15,10 +15,6 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Check input value.
-        env:
-          INPUT: ${{ github.event.inputs.deploy }}
-
       - name: Create and push branch.
         env:
           DEPLOY: ${{ github.event.inputs.deploy }}
