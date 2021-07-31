@@ -26,6 +26,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: debug echo
+        run: |
+          echo ${{ needs.verify-actor.outputs.actor }}
+
+
       - name: Create and push branch.
         env:
           DEPLOY: ${{ github.event.inputs.deploy }}
