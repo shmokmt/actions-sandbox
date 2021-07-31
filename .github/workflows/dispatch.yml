@@ -22,7 +22,7 @@ jobs:
   trigger_deploy:
     runs-on: ubuntu-latest
     needs: [verify-actor]
-    if: ${{ needs.verify-actor.outputs.actor }} != "shmokmt"
+    if: needs.verify-actor.outputs.actor != "shmokmt"
     steps:
       - uses: actions/checkout@v2
 
