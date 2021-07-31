@@ -24,8 +24,6 @@ jobs:
     if: ${{ needs.verify-actor.outputs.actor }} != "shmokmt"
     steps:
       - uses: actions/checkout@v2
-        with:
-          persist-credentials: false
 
       - name: Create and push branch.
         env:
