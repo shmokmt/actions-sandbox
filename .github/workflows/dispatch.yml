@@ -20,7 +20,7 @@ jobs:
 
   trigger_deploy:
     runs-on: ubuntu-latest
-    nees: [verify-actor]
+    needs: [verify-actor]
     if: verify-actor.outputs.actor != "shmokmt"
     steps:
       - uses: actions/checkout@v2
