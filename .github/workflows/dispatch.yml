@@ -8,8 +8,20 @@ on:
         required: true
 
 jobs:
+  verify-actor:
+  runs-on: ubuntu-latest
+  outputs:
+    actor: ${{ github.actor }}
+  steps:
+    - name: echo actor
+      run: |
+        echo ${{ github.actor }}
+  
+
   trigger_deploy:
     runs-on: ubuntu-latest
+    nees: [verify-actor]
+    if: verify-actor.outputs.actor != "shmokmt"
     steps:
       - uses: actions/checkout@v2
         with:
