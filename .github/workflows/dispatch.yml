@@ -11,11 +11,12 @@ jobs:
   verify-actor:
     runs-on: ubuntu-latest
     outputs:
-      actor: ${{ github.actor }}
+      actor: ${{ steps.echo.outputs.actor }}
     steps:
       - name: echo actor
+        id: echo
         run: |
-          echo ${{ github.actor }}
+          echo "::set-output name=actor::${{ github.actor }}"
   
 
   trigger_deploy:
