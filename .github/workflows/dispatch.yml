@@ -9,13 +9,13 @@ on:
 
 jobs:
   verify-actor:
-  runs-on: ubuntu-latest
-  outputs:
-    actor: ${{ github.actor }}
-  steps:
-    - name: echo actor
-      run: |
-        echo ${{ github.actor }}
+    runs-on: ubuntu-latest
+    outputs:
+      actor: ${{ github.actor }}
+    steps:
+      - name: echo actor
+        run: |
+          echo ${{ github.actor }}
   
 
   trigger_deploy:
