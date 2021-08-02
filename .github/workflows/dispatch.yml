@@ -36,6 +36,7 @@ jobs:
 
       - name: debug echo
         run: |
-          echo ${{ needs.verify-actor.outputs.actor }}
+          echo ${{ steps.set-params.outputs.ref }}
+          echo ${{ steps.set-params.outputs.depth }}
 
 
