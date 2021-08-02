@@ -23,11 +23,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: [verify-actor]
     steps:
+      - name: echo
+        id: set-params
+        run: |
+          echo "::set-output name=ref::master"
+          echo "::set-output name=depth:3"
+
       - uses: actions/checkout@v2
-        env:
-          REF: 'master'
         with:
-          ref: ${REF}
+          ref: ${{ steps.set-params.outputs.ref }}
+          fetch-depth: ${{ steps.set-params.outputs.depth }}
 
       - name: debug echo
         run: |
