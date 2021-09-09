@@ -4,18 +4,42 @@ on:
     branches:
       - push
       - push2
+      - artifact
   
 
 jobs:
-  sample:
+  matrix:
+    name: matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        parallelism: [5]
+        node_id: [0, 1, 2, 3, 4]
+    steps:
+      - name: mkdir
+        run: mkdir -p tmp
+
+      - name: echo
+        run: echo ${{ matrix.node_id }} > ./tmp/${{ matrix.node_id }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: result
+          path: ./tmp/${{ matrix.node_id }}
+  
+  artifact:
+    name: artifact
+    needs: [matrix]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: extract branch name
-        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
-        id: extract_branch
-      - name: echo branch name
-        env:
-          BRANCH_NAME: ${{ steps.extract_branch.outputs.branch }}
-        run: echo $BRANCH_NAME
+      - name: download
+        uses: action/download-artifact@v2
+        with:
+          name: result
+          path: ~
+      - name: ls
+        run: ls -alh
+        
+
+
+
