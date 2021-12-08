@@ -9,3 +9,5 @@ jobs:
         uses: actions/checkout@v2
       - name: setup-tfcmt
         uses: shmokmt/actions-setup-tfcmt@v1.0.1-alpha
+        with:
+          version: v2.1.0
