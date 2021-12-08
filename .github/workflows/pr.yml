@@ -7,6 +7,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: cat
-        run: cat README.md
-
+      - name: setup-tfcmt
+        uses: shmokmt/actions-setup-tfcmt@v1.0.0-alpha
