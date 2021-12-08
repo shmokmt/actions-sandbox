@@ -11,4 +11,4 @@ jobs:
       - name: setup-tfcmt
         uses: shmokmt/actions-setup-tfcmt@v1.0.1-alpha
         with:
-          version: v2.1.0
+          version: v2.0.2
