@@ -12,3 +12,6 @@ jobs:
         uses: shmokmt/actions-setup-tfcmt@v1
         with:
           version: v2.0.2
+
+      - name: setup-tfcmt
+        uses: shmokmt/actions-setup-github-comment@v1
