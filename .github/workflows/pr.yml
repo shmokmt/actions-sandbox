@@ -5,13 +5,6 @@ jobs:
   act:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - run: sleep 10
-      - name: setup-tfcmt
-        uses: shmokmt/actions-setup-tfcmt@v1
-        with:
-          version: v2.0.2
-
-      - name: setup-tfcmt
-        uses: shmokmt/actions-setup-github-comment@v1
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1.0
