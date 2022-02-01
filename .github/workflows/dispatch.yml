@@ -26,7 +26,7 @@ jobs:
           echo "dryrun: ${{ github.event.inputs.dryrun }}"
 
       - name: print
-        if: ${{ github.event.input.dryrun == 'true' }}
+        if: ${{ github.event.inputs.dryrun == 'true' }}
         run: |
           echo "target: ${{ github.event.inputs.target }}"
   
