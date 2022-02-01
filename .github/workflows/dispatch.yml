@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print
+        if: ${{ github.event.input.dryrun }}
         run: |
           echo "target: ${{ github.event.inputs.target }}"
           echo "dryrun: ${{ github.event.inputs.dryrun }}"
