@@ -21,11 +21,12 @@ jobs:
   print-input-value:
     runs-on: ubuntu-latest
     steps:
+      - name: echo
+        run: echo "dryrun: ${{ github.event.inputs.dryrun }}"
       - name: print
         if: ${{ github.event.input.dryrun == 'true' }}
         run: |
           echo "target: ${{ github.event.inputs.target }}"
-          echo "dryrun: ${{ github.event.inputs.dryrun }}"
   
 
 
