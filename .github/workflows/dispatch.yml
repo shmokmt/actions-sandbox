@@ -10,6 +10,7 @@ on:
         required: true
       target:
         description: target
+        type: choice
         required: true
         options:
           - A
